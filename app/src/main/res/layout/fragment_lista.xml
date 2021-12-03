@@ -69,12 +69,12 @@
             android:fontFamily="@font/asap_regular"
             android:text="Lista: R$ 0,00"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <ImageView
             android:id="@+id/imgViewCarrinho"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_weight="1"
             android:src="@drawable/carrinho_add" />
 
@@ -86,7 +86,7 @@
             android:fontFamily="@font/asap_regular"
             android:text="Carrinho: R$ 0,00"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 

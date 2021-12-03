@@ -979,7 +979,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
     //---------------------------MÉTODOS DE ATUALIZAÇÃO--------------------------------
     //Método para atualizar (UPDATE) os valores de um registro na tabela PRODUTOXDESPENSA
-    public boolean atualizarProdutoXDespensa(int idReg, int idProd, double quant, int valid, int idDesp){
+    public boolean atualizarProdutoXDespensa(int idReg, int idProd, double quant, String valid, int idDesp){
         SQLiteDatabase conexao = getWritableDatabase(); //Abre a conexão
 
         //Utilizando a classe ContentValues para indicar os valores atualizados

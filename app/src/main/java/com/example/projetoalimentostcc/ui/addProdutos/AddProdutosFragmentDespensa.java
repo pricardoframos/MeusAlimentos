@@ -109,7 +109,6 @@ public class AddProdutosFragmentDespensa extends Fragment {
 
         //ABRIR PRODUTO PARA EDIÇÃO CASO ESTE FRAGMENTE SEJA CHAMADO POR UM ITEM DO RECYCLERVIEW
         if(AlterFragment.fragmentoOrigemDestino == "RecycleViewCasa-AddProdutosFragmentDespensa"){
-
             abrirProdutoRecycler();
         }
 
@@ -318,7 +317,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
 
             //Variáveis para validação de elementos
             double quantidade;
-            int data;
+            String data;
 
             //Validação dos elementos
             if(editTextQuant.getText().toString().isEmpty()){
@@ -327,9 +326,9 @@ public class AddProdutosFragmentDespensa extends Fragment {
                 quantidade = Double.parseDouble(editTextQuant.getText().toString());
             }
             if(editTextDate.getText().toString().isEmpty()){
-                data = 0;
+                data = "01012001";
             }else{
-                data = Integer.parseInt(editTextDate.getText().toString());
+                data = editTextDate.getText().toString();
             }
 
             Log.d("Success","AddProdutosFragmentDespensa.atualizarProdutoXDespensa >>> Validações feitas");

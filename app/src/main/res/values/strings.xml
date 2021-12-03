@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProjetoAlimentosTCC</string>
+    <string name="app_name">Meus Alimentos</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -71,12 +71,6 @@ Pretendemos ainda atualizar nosso aplicativo e caso tenha ficado alguma dúvida 
         <item>Pacote</item>
         <item>Garrafa</item>
         <item>Lata</item>
-    </string-array>
-
-    <!--Spinner Lista-->
-    <string-array name="lista">
-        <item>Extra</item>
-        <item>Savegnago</item>
     </string-array>
 
     <!--Spinner Despensa-->

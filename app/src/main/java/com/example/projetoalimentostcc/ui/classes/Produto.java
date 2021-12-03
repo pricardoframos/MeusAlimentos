@@ -8,7 +8,7 @@ public class Produto {
     private String categoria;
     private String unidade;
     private String urlDaImagem;
-    private int validade;
+    private String validade;
     private double quantidade;
     private String localArmaz;
     private double preco;
@@ -24,7 +24,7 @@ public class Produto {
     }
 
     //Construtor para CasaFragment
-    public Produto(String descricao, String urlDaImagem, int validade, double quantidade,
+    public Produto(String descricao, String urlDaImagem, String validade, double quantidade,
                    String localArmaz) {
         this.descricao = descricao;
         this.urlDaImagem = urlDaImagem;
@@ -34,7 +34,7 @@ public class Produto {
     }
 
     //Construtor para tabela PRODUTOXDESPENSA
-    public Produto(int id, int validade, double quantidade, String localArmaz) {
+    public Produto(int id, String validade, double quantidade, String localArmaz) {
         this.id = id;
         this.validade = validade;
         this.quantidade = quantidade;
@@ -100,11 +100,11 @@ public class Produto {
         this.urlDaImagem = urlDaImagem;
     }
 
-    public int getValidade() {
+    public String getValidade() {
         return validade;
     }
 
-    public void setValidade(int validade) {
+    public void setValidade(String validade) {
         this.validade = validade;
     }
 
