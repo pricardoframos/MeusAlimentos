@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <!--1° Inicio do menu (home)
+        //2° Casa do menu (gallery)
+        //3° Mercado do menu (slideshow)
+        //4° Lista do menu
+        //5° Despensas
+        //6° Sobre do menu
+        //7° Configuração do menu-->
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/modo_inicio"
+            android:title="@string/menu_inicio" />
+        <item
+            android:id="@+id/nav_casa"
+            android:icon="@drawable/casamenu"
+            android:title="@string/menu_casa" />
+        <item
+            android:id="@+id/nav_mercado"
+            android:icon="@drawable/supermercadomenu"
+            android:title="@string/menu_mercado" />
+
+        <!--Parte nova do 4 ao 7
+        //CASO FOR CRIAR UM OUTRO OPÇÃO DE MENU INFORME ACIMA-->
+        <item
+            android:id="@+id/nav_lista"
+            android:icon="@drawable/listamenu"
+            android:title="@string/menu_lista"/>
+
+        <!--<item
+            android:id="@+id/nav_despensa"
+            android:icon="@drawable/geladeira"
+            android:title="@string/menu_despensa" />-->
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sobre"
+            android:icon="@drawable/sobremenu"
+            android:title="@string/menu_sobre"/>
+        <item
+            android:id="@+id/nav_configuracao"
+            android:icon="@drawable/configuracaomenu"
+            android:title="@string/menu_configuracao"/>
+    </group>
+</menu>

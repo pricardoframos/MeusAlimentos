@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextCod"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/border_plaintext"
+                android:hint="Código de barras"
+                android:inputType="number"
+                android:maxLength="13"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/imgButtonLer"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewDesp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="5dp"
+                android:text="Despensa"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
+
+            <Button
+                android:id="@+id/buttonAdicionar"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/buttonshape"
+                android:ems="10"
+                android:text="Adicionar"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewProduto" />
+
+            <ImageView
+                android:id="@+id/imageViewProduto"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/border_plaintext"
+                android:ems="10"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPreco"
+                app:srcCompat="@drawable/imagem_nao_encontrada" />
+
+            <EditText
+                android:id="@+id/editTextPreco"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/border_plaintext"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Data de Validade"
+                android:inputType="date|datetime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerMedida" />
+
+            <TextView
+                android:id="@+id/textViewUnidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="84dp"
+                android:text="Unidade"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerDespensa" />
+
+            <TextView
+                android:id="@+id/textViewCategoria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="24dp"
+                android:text="Categoria"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.082"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDesc" />
+
+            <Spinner
+                android:id="@+id/spinnerMedida"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/style_spinner1"
+                android:entries="@array/medida"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.192"
+                app:layout_constraintStart_toEndOf="@+id/editTextQuant"
+                app:layout_constraintTop_toBottomOf="@+id/textViewUnidade" />
+
+            <Spinner
+                android:id="@+id/spinnerDespensa"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/style_spinner1"
+                android:entries="@array/despensas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDesp"
+                tools:ignore="MissingConstraints" />
+
+            <Spinner
+                android:id="@+id/spinnerCategoria"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/style_spinner1"
+                android:entries="@array/categoria"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.193"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCategoria" />
+
+            <ImageButton
+                android:id="@+id/imgButtonLer"
+                android:layout_width="60dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
+                android:backgroundTint="#00FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/iconecodbarra"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/editTextQuant"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/border_plaintext"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Quantidade"
+                android:inputType="number|numberDecimal"
+                app:layout_constraintEnd_toStartOf="@+id/spinnerMedida"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewUnidade"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/editTextDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/border_plaintext"
+                android:gravity="center"
+                android:hint="Descrição"
+                android:textColor="#000000"
+                android:textColorHighlight="#000000"
+                android:textColorLink="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextCod" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

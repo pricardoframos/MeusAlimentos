@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_inicio">
+
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="com.example.projetoalimentostcc.ui.inicio.InicioFragment"
+        android:label="@string/menu_inicio"
+        tools:layout="@layout/fragment_inicio" />
+
+    <fragment
+        android:id="@+id/nav_casa"
+        android:name="com.example.projetoalimentostcc.ui.casa.CasaFragment"
+        android:label="@string/menu_casa"
+        tools:layout="@layout/fragment_inicio" />
+
+    <fragment
+        android:id="@+id/nav_mercado"
+        android:name="com.example.projetoalimentostcc.ui.supermercado.MercadoFragment"
+        android:label="@string/menu_mercado"
+        tools:layout="@layout/fragment_mercado" />
+    <fragment
+        android:id="@+id/nav_lista"
+        android:name="com.example.projetoalimentostcc.ui.lista.CadastroListaFragment"
+        android:label="@string/menu_lista"
+        tools:layout="@layout/fragment_cadastro_lista" />
+    <fragment
+        android:id="@+id/nav_despensa"
+        android:name="com.example.projetoalimentostcc.ui.despensa.CadastroDespensaFragment"
+        android:label="@string/menu_despensa"
+        tools:layout="@layout/fragment_cadastro_despensa" />
+    <fragment
+        android:id="@+id/nav_sobre"
+        android:name="com.example.projetoalimentostcc.ui.sobre.SobreFragment"
+        android:label="@string/menu_sobre"
+        tools:layout="@layout/fragment_sobre" />
+    <fragment
+        android:id="@+id/nav_configuracao"
+        android:name="com.example.projetoalimentostcc.ui.configuracao.ConfiguracaoFragment"
+        android:label="@string/menu_configuracao"
+        tools:layout="@layout/fragment_configuracao" />
+
+</navigation>

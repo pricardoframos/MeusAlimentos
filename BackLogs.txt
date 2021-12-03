@@ -1,0 +1,7 @@
+Será necessário criar um fragment_add_produto adaptável para receber os parâmetros de despensa e lista
+
+- Modificar layout do fragment_add_produto_despensa
+>>> Criar um EditText para o valor do Preço
+>>> Criar um Spinner para selecionar o Local de armazenamento
+
+- Remoção do atributo Quantidade da tabela PRODUTO

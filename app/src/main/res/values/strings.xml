@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">ProjetoAlimentosTCC</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--MENU LATERAL-->
+    <string name="menu_inicio">Inicío</string>
+    <string name="menu_casa">Casa</string>
+    <string name="menu_mercado">Supermercado</string>
+    <string name="menu_lista">Lista</string>
+    <string name="menu_despensa">Despensas</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_configuracao">Configuração</string>
+
+
+    <string name="nav_header_titulo">Meus Alimentos</string>
+
+    <!--Fragment de inicio as strigs dos text view-->
+    <string name="modoCasa1">Modo Casa</string>
+    <string name="modoMercado2">Modo Supermercado</string>
+    <!--Tela configuração-->
+    <string name="txt_sobre">Sobre Nós</string>
+    <string name="txt_sobr2">Nossa equipe é totalmente focada e unida, com o intuito de sempre ajudar na melhoria do nosso aplicativo.</string>
+    <string name="txt_sobre3">Controle de despensas e listas de compras!!!
+Esse é o nosso lema.
+\n\n
+A nossa equipe teve a ideia de criar um aplicativo de facilitar as pessoas que irão ao mercado para fazer suas compras e que levam um monte de anotações e no final de tudo, você acaba sempre esquecendo algum alimento, ou algum produto de limpeza e até mesmo uma bebida e  você como comprador(a) fica frustrado(a) ao saber que terá que voltar novamente só para pegar o produto.
+\n\n
+Por isso criamos uma lista de compras, para ajudar você aonde possa guardar os seus produtos.
+\n\n
+Não podemos esquecer que o nosso aplicativo oferece uma tela com um campo de interação agradável, simplesmente com apenas alguns botões, você poderá ter feito o scanner, depois poderá mexer na categoria, na data de validade e até mesmo na unidade podendo colocar em litros, em quilos, em pacotes, ou em garrafas, entre outros. E no final adicionado o seu produto em uma lista, de maneira simples e rápida.
+\n\n
+Temos também a opção de você escolher um nome ou supermercado conhecido da sua escolha, sem ser algum mercado de marcas conhecidos, como por exemplo pode colocar um mercado que tenha perto da sua casa.
+\n\n
+Nossa equipe é totalmente focada e unida, com o intuito de sempre ajudar na melhoria do nosso aplicativo.
+\n\n
+Pretendemos ainda atualizar nosso aplicativo e caso tenha ficado alguma dúvida ou quer nos dar uma opinião, ou até mesmo avaliar nosso aplicativo mande uma mensagem para o nosso e-mail:
+</string>
+    <string name="txt_email">projetoalimentostcc2021@gmail.com</string>
+
+
+    <!--Spinner Categoria-->
+    <string-array name="categoria">
+        <item>Bazar</item>
+        <item>Bebê</item>
+        <item>Bebidas</item>
+        <item>Carnes, Aves e Peixes</item>
+        <item>Congelados</item>
+        <item>Farmácia</item>
+        <item>Floricultura e Jardinagem</item>
+        <item>Frios e Lacticínios</item>
+        <item>Higiene e Perfumaria</item>
+        <item>Hortifruti</item>
+        <item>Limpeza</item>
+        <item>Mercearia</item>
+        <item>Pães e Bolos</item>
+        <item>Pet</item>
+    </string-array>
+
+    <!--Spinner Unidades de Medidas-->
+    <string-array name="medida">
+        <item>Un</item>
+        <item>Dz</item>
+        <item>Ml</item>
+        <item>L</item>
+        <item>Kg</item>
+        <item>g</item>
+        <item>Caixa</item>
+        <item>Pacote</item>
+        <item>Garrafa</item>
+        <item>Lata</item>
+    </string-array>
+
+    <!--Spinner Lista-->
+    <string-array name="lista">
+        <item>Extra</item>
+        <item>Savegnago</item>
+    </string-array>
+
+    <!--Spinner Despensa-->
+    <string-array name="despensas">
+        <item>Armário</item>
+        <item>Geladeira</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
