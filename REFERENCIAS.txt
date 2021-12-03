@@ -1,2 +1,0 @@
-btnCadastrarDesp = Botão para cadastrar despensa
-btnDeletarDesp = Botão para deletar despensa
