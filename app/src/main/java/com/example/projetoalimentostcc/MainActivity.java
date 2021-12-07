@@ -1,16 +1,20 @@
 package com.example.projetoalimentostcc;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.projetoalimentostcc.ui.addProdutos.AddProdutosFragmentDespensa;
 import com.example.projetoalimentostcc.ui.casa.CasaFragment;
 import com.example.projetoalimentostcc.ui.classes.AlterFragment;
 import com.example.projetoalimentostcc.ui.classes.Despensa;
@@ -33,10 +37,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private String fragmentAtual = AlterFragment.fragmentAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,4 +98,11 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    @Override
+    public void onBackPressed() {
+        
+    }
+
+
 }

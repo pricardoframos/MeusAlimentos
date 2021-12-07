@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projetoalimentostcc.MainActivity;
 import com.example.projetoalimentostcc.R;
 import com.example.projetoalimentostcc.ui.addProdutos.AddProdutosFragmentDespensa;
 import com.example.projetoalimentostcc.ui.classes.AlterFragment;
@@ -128,4 +129,5 @@ public class CasaFragment extends Fragment implements AdapterCasa.IProdutoXDespe
                 .replace(R.id.nav_host_fragment_content_main,
                         new AddProdutosFragmentDespensa()).addToBackStack("Adicionar Produto").commit();
     }
+
 }
