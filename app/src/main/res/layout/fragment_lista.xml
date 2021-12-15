@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     tools:context=".ui.lista.ListaFragment">
 
 
@@ -61,32 +62,51 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewLista"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/textViewListaCusto"
-            android:layout_width="133dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:fontFamily="@font/asap_regular"
-            android:text="Lista: R$ 0,00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:id="@+id/imgViewCarrinho"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
             android:layout_weight="1"
-            android:src="@drawable/carrinho_add" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textViewCarrinhoCusto"
-            android:layout_width="149dp"
+            <ImageView
+                android:id="@+id/imageViewLista"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/lista" />
+
+            <TextView
+                android:id="@+id/textViewListaCusto"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/asap_regular"
+                android:gravity="center_vertical"
+                android:text="R$ 0,00"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:fontFamily="@font/asap_regular"
-            android:text="Carrinho: R$ 0,00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgViewCarrinho"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/carrinho_add" />
+
+            <TextView
+                android:id="@+id/textViewCarrinhoCusto"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/asap_regular"
+                android:gravity="center_vertical"
+                android:text="R$ 0,00"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -147,7 +147,7 @@ public class ListaFragment extends Fragment implements AdapterLista.IProdutoXLis
                 valorLista += totalProduto;
             }
         }
-        textViewListaCusto.setText(("Lista: R$ " + valorLista).replace(".",","));
+        textViewListaCusto.setText(("R$ " + String.format("%.2f",valorLista)).replace(".",","));
         valorLista = 0;
     }
     @Override
@@ -163,7 +163,7 @@ public class ListaFragment extends Fragment implements AdapterLista.IProdutoXLis
                 valorTotal += totalProdutoCarrinho;
             }
         }
-        textViewCarrinhoCusto.setText(("Carrinho: R$ " + valorTotal).replace(".",","));
+        textViewCarrinhoCusto.setText(("R$ " + String.format("%.2f", valorTotal)).replace(".",","));
         valorTotal = 0;
     }
 

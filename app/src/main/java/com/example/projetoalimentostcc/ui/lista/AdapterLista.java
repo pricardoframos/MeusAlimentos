@@ -24,6 +24,7 @@ import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.util.List;
+import java.util.Locale;
 
 public class AdapterLista extends RecyclerView.Adapter<AdapterLista.MyViewHolder>{
 
@@ -117,15 +118,30 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.MyViewHolder
             }
         });
 
+        //System.out.println(String.format(
+        //                Locale.GERMAN, "%,.2f", d)
+
+        //Variável quantidade declarada antes da atribuição no holder para execução do replace
+        double quantidade = (bancoDeDados.buscaIdProdutoXLista(produtoXLista.getIdRegistro()).get(0)
+                .getQuantidadeProduto());
+        String quantFormat;
+        if(quantidade %1 == 0){
+            quantFormat = String.format("%.0f",quantidade).replace(".",",");
+        }else{
+            quantFormat = String.valueOf(quantidade).replace(".",",");
+        }
+
+        String unidade = bancoDeDados.buscaIdProduto(produtoXLista.getIdProduto()).
+                get(0).getUnidade();
+
         //Variável preco declarada antes da atribuição no holder para execução do replace
-        String preco = (bancoDeDados.buscaIdProdutoXLista(produtoXLista.getIdRegistro()).get(0)
-                .getQuantidadeProduto() +" "+bancoDeDados.buscaIdProduto(produtoXLista.getIdProduto()).
-                get(0).getUnidade()+" = R$" + (bancoDeDados.buscaIdProdutoXLista(produtoXLista.
+        String preco = ("R$" + String.format( "%.2f",bancoDeDados.buscaIdProdutoXLista(produtoXLista.
                 getIdRegistro()).get(0).getPrecoProduto()*bancoDeDados.buscaIdProdutoXLista
-                (produtoXLista.getIdRegistro()).get(0).getQuantidadeProduto())).replace(".",",");
+                (produtoXLista.getIdRegistro()).get(0).getQuantidadeProduto()));
+
         holder.descricao.setText(bancoDeDados.buscaIdProduto(listaProdutoXLista.get(position)
                 .getIdProduto()).get(0).getDescricao());
-        holder.preco.setText(preco);
+        holder.precoQuantidade.setText(quantFormat+" "+unidade+" = " +preco);
         Glide.with(holder.fotoProduto.getContext()).load(bancoDeDados.
                 buscaIdProduto(listaProdutoXLista.get(position).getIdProduto()).get(0).
                 getUrlDaImagem()).into(holder.fotoProduto);
@@ -160,7 +176,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         //Declaração dos elementos do ViewHolder
-        TextView descricao, validade, preco;
+        TextView descricao, validade, precoQuantidade;
         ImageView fotoProduto;
         CheckBox checkBox;
         IProdutoXListaRecycler mListener;
@@ -169,7 +185,7 @@ public class AdapterLista extends RecyclerView.Adapter<AdapterLista.MyViewHolder
             super(itemView);
             //Referência dos elementos do ViewHolder
             descricao = itemView.findViewById(R.id.textViewListaDescricao);
-            preco = itemView.findViewById(R.id.textViewListaUniPreco);
+            precoQuantidade = itemView.findViewById(R.id.textViewListaUniPreco);
             checkBox = itemView.findViewById(R.id.checkBox);
             fotoProduto = itemView.findViewById(R.id.imageViewListaProduto);
 

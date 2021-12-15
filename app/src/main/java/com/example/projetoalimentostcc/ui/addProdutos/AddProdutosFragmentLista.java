@@ -96,6 +96,11 @@ public class AddProdutosFragmentLista extends Fragment {
             }
         });
 
+        //Máscara no para o campo data de validade
+        SimpleMaskFormatter smfData = new SimpleMaskFormatter("N,NNN");
+        MaskTextWatcher mtwData = new MaskTextWatcher(editTextQuant, smfData);
+        editTextQuant.addTextChangedListener(mtwData);
+
         //ABRIR PRODUTO PARA EDIÇÃO CASO ESTE FRAGMENTE SEJA CHAMADO POR UM ITEM DO RECYCLERVIEW
         if(AlterFragment.fragmentoOrigemDestino == "RecycleViewLista-AddProdutosFragmentLista"){
 
@@ -222,8 +227,6 @@ public class AddProdutosFragmentLista extends Fragment {
         BancoDeDados bancoDeDados = new BancoDeDados(getContext(),1);
         List<Produto> listaProduto = bancoDeDados.buscaDescricaoProduto(editTextDesc.getText().toString().trim());
         Log.d("Success","AddProdutosFragmentLista.cadastrarProdutoXLista >>> Criou listaProduto");
-//        List<Produto> produtoXLista = bancoDeDados.busca(editTextDesc.getText().toString().trim());
-//        Log.d("Success","AddProdutosFragmentLista.cadastrarProdutoXLista >>> Criou listaProduto");
 
         //Variáveis para validação de elementos
         double quantidade;
@@ -470,6 +473,9 @@ public class AddProdutosFragmentLista extends Fragment {
 
     private void abrirProdutoRecycler(){
         BancoDeDados bancoDeDados = new BancoDeDados(getContext(),1);
+        double quantidade = bancoDeDados.buscaIdProdutoXLista
+                (AlterFragment.indiceRecyclerViewLista).get(0).getQuantidadeProduto();
+        String quantFormat;
 
         buttonAdicionar.setText("Atualizar");
         editTextCodList.setText(bancoDeDados.buscaIdProduto(bancoDeDados.buscaIdProdutoXLista
@@ -488,8 +494,14 @@ public class AddProdutosFragmentLista extends Fragment {
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Categoria captada e inserida. IdRegistro: " + AlterFragment.indiceRecyclerViewLista);
 
-        editTextQuant.setText(String.valueOf(bancoDeDados.buscaIdProdutoXLista
-                (AlterFragment.indiceRecyclerViewLista).get(0).getQuantidadeProduto()));
+        if(quantidade %1 == 0){
+            quantFormat = String.format("%.0f",quantidade).replace(".",",");
+        }else{
+            quantFormat = String.valueOf(quantidade).replace(".",",");
+        }
+        editTextQuant.setText(quantFormat);
+//        editTextQuant.setText(String.valueOf(bancoDeDados.buscaIdProdutoXLista
+//                (AlterFragment.indiceRecyclerViewLista).get(0).getQuantidadeProduto()));
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Quantidade captada e inserida");
 
