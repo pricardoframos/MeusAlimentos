@@ -99,11 +99,6 @@ public class AddProdutosFragmentLista extends Fragment {
             }
         });
 
-        //Máscara no para o campo data de validade
-//        SimpleMaskFormatter smfData = new SimpleMaskFormatter("R$N");
-//        MaskTextWatcher mtwData = new MaskTextWatcher(editTextPreco, smfData);
-//        editTextPreco.addTextChangedListener(mtwData);
-
         //ABRIR PRODUTO PARA EDIÇÃO CASO ESTE FRAGMENTE SEJA CHAMADO POR UM ITEM DO RECYCLERVIEW
         if(AlterFragment.fragmentoOrigemDestino == "RecycleViewLista-AddProdutosFragmentLista"){
             abrirProdutoRecycler();
@@ -232,6 +227,7 @@ public class AddProdutosFragmentLista extends Fragment {
         //Variáveis para validação de elementos
         double quantidade;
         double preco;
+        String precoFormat;
 
         //Validação dos elementos
         if(editTextQuant.getText().toString().isEmpty()){
@@ -242,7 +238,8 @@ public class AddProdutosFragmentLista extends Fragment {
         if(editTextPreco.getText().toString().isEmpty()){
             preco = 0;
         }else {
-            preco = Double.parseDouble(editTextPreco.getText().toString().replace(",","."));
+            precoFormat = editTextPreco.getText().toString().replace(".","");
+            preco = Double.parseDouble(precoFormat.replace(",","."));
         }
 
         try {
@@ -312,6 +309,7 @@ public class AddProdutosFragmentLista extends Fragment {
             //Variáveis para validação de elementos
             double quantidade;
             double preco;
+            String precoFormat;
 
             //Validação dos elementos
             if(editTextQuant.getText().toString().isEmpty()){
@@ -322,7 +320,8 @@ public class AddProdutosFragmentLista extends Fragment {
             if(editTextPreco.getText().toString().isEmpty()){
                 preco = 0;
             }else{
-                preco = Double.parseDouble(editTextPreco.getText().toString().replace(",","."));
+                precoFormat = editTextPreco.getText().toString().replace(".","");
+                preco = Double.parseDouble(precoFormat.replace(",","."));
             }
 
             Log.d("Success","AddProdutosFragmentLista.atualizarProdutoXLista >>> Validações feitas");
@@ -474,6 +473,8 @@ public class AddProdutosFragmentLista extends Fragment {
 
     private void abrirProdutoRecycler(){
         BancoDeDados bancoDeDados = new BancoDeDados(getContext(),1);
+
+        //Variáveis para adaptação das máscaras nos campos de Quantidade e Preço
         double quantidade = bancoDeDados.buscaIdProdutoXLista
                 (AlterFragment.indiceRecyclerViewLista).get(0).getQuantidadeProduto();
         String quantFormat;
@@ -481,6 +482,7 @@ public class AddProdutosFragmentLista extends Fragment {
                 (AlterFragment.indiceRecyclerViewLista).get(0).getPrecoProduto();
         String precoModulo = String.valueOf(preco%1);
 
+        //Atribuição de dados nos elementos do fragment
         buttonAdicionar.setText("Atualizar");
         editTextCodList.setText(bancoDeDados.buscaIdProduto(bancoDeDados.buscaIdProdutoXLista
                 (AlterFragment.indiceRecyclerViewLista).get(0).getIdProduto()).get(0).getCodigo());
@@ -498,6 +500,7 @@ public class AddProdutosFragmentLista extends Fragment {
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Categoria captada e inserida. IdRegistro: " + AlterFragment.indiceRecyclerViewLista);
 
+        //Adaptação dos dados e exibição no campo Quantidade
         if(quantidade %1 == 0){
             quantFormat = String.format("%.0f",quantidade).replace(".",",");
         }else{
@@ -513,6 +516,7 @@ public class AddProdutosFragmentLista extends Fragment {
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Unidade de medida captada e inserida");
 
+        //Adaptação dos dados e exibição no campo Preço
         if(precoModulo.toCharArray().length == 1){
             editTextPreco.setText(String.valueOf(preco*100).replace(".",""));
         }else{
