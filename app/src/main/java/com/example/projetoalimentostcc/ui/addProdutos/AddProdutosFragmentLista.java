@@ -2,6 +2,7 @@ package com.example.projetoalimentostcc.ui.addProdutos;
 
 
 import android.content.Intent;
+import android.icu.util.Currency;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -56,6 +57,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.abhinay.input.CurrencyEditText;
+
 public class AddProdutosFragmentLista extends Fragment {
     //Declaração dos elementos do fragment
     private View view;
@@ -97,13 +100,12 @@ public class AddProdutosFragmentLista extends Fragment {
         });
 
         //Máscara no para o campo data de validade
-        SimpleMaskFormatter smfData = new SimpleMaskFormatter("N,NNN");
-        MaskTextWatcher mtwData = new MaskTextWatcher(editTextQuant, smfData);
-        editTextQuant.addTextChangedListener(mtwData);
+//        SimpleMaskFormatter smfData = new SimpleMaskFormatter("R$N");
+//        MaskTextWatcher mtwData = new MaskTextWatcher(editTextPreco, smfData);
+//        editTextPreco.addTextChangedListener(mtwData);
 
         //ABRIR PRODUTO PARA EDIÇÃO CASO ESTE FRAGMENTE SEJA CHAMADO POR UM ITEM DO RECYCLERVIEW
         if(AlterFragment.fragmentoOrigemDestino == "RecycleViewLista-AddProdutosFragmentLista"){
-
             abrirProdutoRecycler();
         }
 
@@ -155,7 +157,6 @@ public class AddProdutosFragmentLista extends Fragment {
                     }
                 }
             }
-
         });
 
         editTextDesc.addTextChangedListener(new TextWatcher() {
@@ -241,7 +242,7 @@ public class AddProdutosFragmentLista extends Fragment {
         if(editTextPreco.getText().toString().isEmpty()){
             preco = 0;
         }else {
-            preco = Double.parseDouble(editTextPreco.getText().toString());
+            preco = Double.parseDouble(editTextPreco.getText().toString().replace(",","."));
         }
 
         try {
@@ -321,7 +322,7 @@ public class AddProdutosFragmentLista extends Fragment {
             if(editTextPreco.getText().toString().isEmpty()){
                 preco = 0;
             }else{
-                preco = Double.parseDouble(editTextPreco.getText().toString());
+                preco = Double.parseDouble(editTextPreco.getText().toString().replace(",","."));
             }
 
             Log.d("Success","AddProdutosFragmentLista.atualizarProdutoXLista >>> Validações feitas");
@@ -476,6 +477,9 @@ public class AddProdutosFragmentLista extends Fragment {
         double quantidade = bancoDeDados.buscaIdProdutoXLista
                 (AlterFragment.indiceRecyclerViewLista).get(0).getQuantidadeProduto();
         String quantFormat;
+        double preco = bancoDeDados.buscaIdProdutoXLista
+                (AlterFragment.indiceRecyclerViewLista).get(0).getPrecoProduto();
+        String precoModulo = String.valueOf(preco%1);
 
         buttonAdicionar.setText("Atualizar");
         editTextCodList.setText(bancoDeDados.buscaIdProduto(bancoDeDados.buscaIdProdutoXLista
@@ -500,8 +504,6 @@ public class AddProdutosFragmentLista extends Fragment {
             quantFormat = String.valueOf(quantidade).replace(".",",");
         }
         editTextQuant.setText(quantFormat);
-//        editTextQuant.setText(String.valueOf(bancoDeDados.buscaIdProdutoXLista
-//                (AlterFragment.indiceRecyclerViewLista).get(0).getQuantidadeProduto()));
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Quantidade captada e inserida");
 
@@ -511,8 +513,12 @@ public class AddProdutosFragmentLista extends Fragment {
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Unidade de medida captada e inserida");
 
-        editTextPreco.setText(String.valueOf(bancoDeDados.buscaIdProdutoXLista
-                (AlterFragment.indiceRecyclerViewLista).get(0).getPrecoProduto()));
+        if(precoModulo.toCharArray().length == 1){
+            editTextPreco.setText(String.valueOf(preco*10).replace(".",""));
+        }else{
+            editTextPreco.setText(String.valueOf(preco).replace(".",""));
+        }
+
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
                 "Data captada e inserida");
 

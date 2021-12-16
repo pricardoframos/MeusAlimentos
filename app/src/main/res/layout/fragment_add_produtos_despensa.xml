@@ -72,11 +72,11 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextPreco"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDate"
                 app:srcCompat="@drawable/imagem_nao_encontrada" />
 
             <EditText
-                android:id="@+id/editTextPreco"
+                android:id="@+id/editTextDate"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="24dp"

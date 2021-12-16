@@ -61,4 +61,7 @@ dependencies {
 
     //Máscara para datas
     implementation  'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
+
+    //Máscara para valores monetários
+    implementation 'me.abhinay.input:currency-edittext:1.1'
 }

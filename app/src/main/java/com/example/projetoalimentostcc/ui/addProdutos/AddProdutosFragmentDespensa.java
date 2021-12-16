@@ -85,7 +85,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
         //Referência dos elementos do fragment
         editTextCod = view.findViewById(R.id.editTextCod);
         editTextDesc = view.findViewById(R.id.editTextDesc);
-        editTextDate = view.findViewById(R.id.editTextPreco);
+        editTextDate = view.findViewById(R.id.editTextDate);
         editTextQuant = view.findViewById(R.id.editTextQuant);
         spinnerCategoria = view.findViewById(R.id.spinnerCategoria);
         spinnerMedida = view.findViewById(R.id.spinnerMedida);
