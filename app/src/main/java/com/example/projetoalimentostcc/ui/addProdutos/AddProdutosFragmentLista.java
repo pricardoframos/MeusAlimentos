@@ -514,9 +514,9 @@ public class AddProdutosFragmentLista extends Fragment {
                 "Unidade de medida captada e inserida");
 
         if(precoModulo.toCharArray().length == 1){
-            editTextPreco.setText(String.valueOf(preco*10).replace(".",""));
+            editTextPreco.setText(String.valueOf(preco*100).replace(".",""));
         }else{
-            editTextPreco.setText(String.valueOf(preco).replace(".",""));
+            editTextPreco.setText(String.valueOf(preco*10).replace(".",""));
         }
 
         Log.d("Success","Add.ProdutosFragmentLista.abrirProdutoRecycler >>> " +
