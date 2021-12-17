@@ -72,7 +72,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
     private View view;
     private Spinner spinnerCategoria, spinnerMedida, spinnerDespensa;
     private ImageButton imgButtonLer;
-    private EditText editTextCod, editTextDesc, editTextQuant, editTextDate;
+    private EditText editTextCod, editTextDesc, editTextQuant;
     private ImageView imageViewProduto, imageViewCalend;
     private Button buttonAdicionar;
     TextView textViewData;
@@ -100,6 +100,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
         spinnerDespensa = view.findViewById(R.id.spinnerDespensa);
         imgButtonLer = view.findViewById(R.id.imgButtonLer);
         imageViewProduto = view.findViewById(R.id.imageViewProduto);
+        imageViewCalend = view.findViewById(R.id.imageViewCalend);
         buttonAdicionar = view.findViewById(R.id.buttonAdicionar);
 
         //Calendário
@@ -292,19 +293,19 @@ public class AddProdutosFragmentDespensa extends Fragment {
         }else {
             quantidade = Double.parseDouble(editTextQuant.getText().toString());
         }
-        if(editTextDate.getText().toString().isEmpty()){
-            data = "01012001";
-        }else{
-            data = editTextDate.getText().toString().replace("/","");
-        }
+       // if(editTextDate.getText().toString().isEmpty()){
+          //  data = "01012001";
+      //  }else{
+        //    data = editTextDate.getText().toString().replace("/","");
+        //}
 
-        try {
-            bancoDeDados.cadastrarProdutoXDespensa(listaProduto.get(0).getId(),
-                    quantidade,data,
-                    listaDespensa.get(0).getId());
-        }catch(Exception e){
-            Log.d("Success","Add.ProdutosFragment.cadastrarProdutoXDespensa >>> "+ e);
-        }
+       // try {
+         //   bancoDeDados.cadastrarProdutoXDespensa(listaProduto.get(0).getId(),
+           //         quantidade,data,
+             //       listaDespensa.get(0).getId());
+        //}catch(Exception e){
+          //  Log.d("Success","Add.ProdutosFragment.cadastrarProdutoXDespensa >>> "+ e);
+        //}
     }
 
     //Cadastrar PRODUTO
@@ -364,7 +365,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
 
             //Variáveis para validação de elementos
             double quantidade;
-            String data;
+            String data = null;
 
             //Validação dos elementos
             if(editTextQuant.getText().toString().isEmpty()){
@@ -372,11 +373,11 @@ public class AddProdutosFragmentDespensa extends Fragment {
             }else {
                 quantidade = Double.parseDouble(editTextQuant.getText().toString());
             }
-            if(editTextDate.getText().toString().isEmpty()){
+        //    if(editTextDate.getText().toString().isEmpty()){
                 data = "01012001";
-            }else{
-                data = editTextDate.getText().toString();
-            }
+         //   }else{
+          //      data = editTextDate.getText().toString();
+            //}
 
             Log.d("Success","AddProdutosFragmentDespensa.atualizarProdutoXDespensa >>> Validações feitas");
 
@@ -576,10 +577,10 @@ public class AddProdutosFragmentDespensa extends Fragment {
         Log.d("Success","Add.ProdutosFragmentDespensa.abrirProdutoRecycler >>> " +
                 "Unidade de medida captada e inserida");
 
-        editTextDate.setText(String.valueOf(bancoDeDados.buscaIdProdutoXDespensa
-                (AlterFragment.indiceRecyclerViewCasa).get(0).getValidProduto()));
-        Log.d("Success","Add.ProdutosFragmentDespensa.abrirProdutoRecycler >>> " +
-                "Data captada e inserida");
+       // editTextDate.setText(String.valueOf(bancoDeDados.buscaIdProdutoXDespensa
+       //         (AlterFragment.indiceRecyclerViewCasa).get(0).getValidProduto()));
+      //  Log.d("Success","Add.ProdutosFragmentDespensa.abrirProdutoRecycler >>> " +
+        //        "Data captada e inserida");
 
         if(bancoDeDados.buscaIdProduto(bancoDeDados.buscaIdProdutoXDespensa
                 (AlterFragment.indiceRecyclerViewCasa).get(0).getIdProduto()).get(0).getUrlDaImagem()!=null){

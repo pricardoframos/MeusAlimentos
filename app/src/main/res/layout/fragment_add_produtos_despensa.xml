@@ -46,32 +46,35 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
-            <TextView
-                android:id="@+id/textViewData"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="48dp"
-                android:ems="10"
-                android:gravity="center|start"
-                android:hint="__/__/____"
-                android:textColor="#000000"
-                android:textColorHint="#000000"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDataVali" />
-
-            <ImageView
-                android:id="@+id/imageViewCalend"
-                android:layout_width="39dp"
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="198dp"
                 android:layout_height="31dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="2dp"
-                app:layout_constraintEnd_toStartOf="@+id/textViewData"
-                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDataVali"
-                app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextDataVali">
+
+                <ImageView
+                    android:id="@+id/imageViewCalend"
+                    android:layout_width="60dp"
+                    android:layout_height="31dp"
+                    app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+
+                <TextView
+                    android:id="@+id/textViewData"
+                    android:layout_width="138dp"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="__/__/____"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/buttonAdicionar"
@@ -95,13 +98,13 @@
                 android:id="@+id/imageViewProduto"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/border_plaintext"
                 android:ems="10"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewData"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 app:srcCompat="@drawable/imagem_nao_encontrada" />
 
             <TextView
@@ -221,8 +224,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="158dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="195dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="158dp"
                 android:text="Data de Validade"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
