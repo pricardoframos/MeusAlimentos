@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aluno/Documents/Luan/Meus Alimentos/MeusAlimentos/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.38125" />
+        <entry key="..\:/Users/aluno/Documents/Luan/Meus Alimentos/MeusAlimentos/app/src/main/res/layout/fragment_add_produtos_despensa.xml" value="0.5" />
+        <entry key="..\:/Users/aluno/Documents/Luan/Meus Alimentos/MeusAlimentos/app/src/main/res/layout/ic_baseline_calendar_today_24.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/aluno/Paulo3DSN/ProjetosAndroid/Meus Alimentos/Meus Alimentos/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aluno/Paulo3DSN/ProjetosAndroid/Meus Alimentos/Meus Alimentos/app/src/main/res/layout/adapter_recycler_casa.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/aluno/Paulo3DSN/ProjetosAndroid/Meus Alimentos/Meus Alimentos/app/src/main/res/layout/adapter_recycler_lista.xml" value="0.36666666666666664" />

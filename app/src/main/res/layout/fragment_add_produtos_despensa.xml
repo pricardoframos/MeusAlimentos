@@ -10,8 +10,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,12 +46,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
+            <TextView
+                android:id="@+id/textViewData"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="48dp"
+                android:ems="10"
+                android:gravity="center|start"
+                android:hint="__/__/____"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDataVali" />
+
+            <ImageView
+                android:id="@+id/imageViewCalend"
+                android:layout_width="39dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toStartOf="@+id/textViewData"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDataVali"
+                app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+
             <Button
                 android:id="@+id/buttonAdicionar"
                 android:layout_width="0dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/buttonshape"
@@ -72,24 +101,8 @@
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+                app:layout_constraintTop_toBottomOf="@+id/textViewData"
                 app:srcCompat="@drawable/imagem_nao_encontrada" />
-
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/border_plaintext"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Data de Validade"
-                android:inputType="date|datetime"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerMedida" />
 
             <TextView
                 android:id="@+id/textViewUnidade"
@@ -192,8 +205,8 @@
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/border_plaintext"
                 android:gravity="center"
-                android:minHeight="40dp"
                 android:hint="Descrição"
+                android:minHeight="40dp"
                 android:textColor="#000000"
                 android:textColorHighlight="#000000"
                 android:textColorLink="#000000"
@@ -202,6 +215,19 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextCod" />
+
+            <TextView
+                android:id="@+id/editTextDataVali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="158dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="195dp"
+                android:text="Data de Validade"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextQuant" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

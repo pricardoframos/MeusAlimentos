@@ -1,7 +1,10 @@
 package com.example.projetoalimentostcc.ui.addProdutos;
 
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,11 +18,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -56,6 +61,7 @@ import org.json.JSONObject;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -67,8 +73,10 @@ public class AddProdutosFragmentDespensa extends Fragment {
     private Spinner spinnerCategoria, spinnerMedida, spinnerDespensa;
     private ImageButton imgButtonLer;
     private EditText editTextCod, editTextDesc, editTextQuant, editTextDate;
-    private ImageView imageViewProduto;
+    private ImageView imageViewProduto, imageViewCalend;
     private Button buttonAdicionar;
+    TextView textViewData;
+    DatePickerDialog.OnDateSetListener setListener;
 
     //Declaração de variáveis
     private static String scannerResult;
@@ -85,7 +93,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
         //Referência dos elementos do fragment
         editTextCod = view.findViewById(R.id.editTextCod);
         editTextDesc = view.findViewById(R.id.editTextDesc);
-        editTextDate = view.findViewById(R.id.editTextDate);
+        textViewData = view.findViewById(R.id.textViewData);
         editTextQuant = view.findViewById(R.id.editTextQuant);
         spinnerCategoria = view.findViewById(R.id.spinnerCategoria);
         spinnerMedida = view.findViewById(R.id.spinnerMedida);
@@ -93,11 +101,49 @@ public class AddProdutosFragmentDespensa extends Fragment {
         imgButtonLer = view.findViewById(R.id.imgButtonLer);
         imageViewProduto = view.findViewById(R.id.imageViewProduto);
         buttonAdicionar = view.findViewById(R.id.buttonAdicionar);
+//Calendário
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        imageViewCalend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(),
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth
+                        , setListener,
+                        year,
+                        month,
+                        day);
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month+1;
+                String date = day+"/"+month+"/"+year;
+                textViewData.setText(date);
+            }
+        };
+        imageViewCalend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month+1;
+                        String date = day+"/"+month+"/"+year;
+                        textViewData.setText(date);
+                    }
+                }, year,month,day);
+                datePickerDialog.show();
+            }
+        });
 
-        //Máscara no para o campo data de validade
-        SimpleMaskFormatter smfData = new SimpleMaskFormatter("NN/NN/NNNN");
-        MaskTextWatcher mtwData = new MaskTextWatcher(editTextDate, smfData);
-        editTextDate.addTextChangedListener(mtwData);
 
         //Botão Scanner/Add
         imgButtonLer.setOnClickListener(new View.OnClickListener() {
