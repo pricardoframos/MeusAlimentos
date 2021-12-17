@@ -101,7 +101,8 @@ public class AddProdutosFragmentDespensa extends Fragment {
         imgButtonLer = view.findViewById(R.id.imgButtonLer);
         imageViewProduto = view.findViewById(R.id.imageViewProduto);
         buttonAdicionar = view.findViewById(R.id.buttonAdicionar);
-//Calendário
+
+        //Calendário
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);

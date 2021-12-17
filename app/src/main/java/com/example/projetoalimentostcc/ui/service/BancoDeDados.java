@@ -948,19 +948,16 @@ public class BancoDeDados extends SQLiteOpenHelper {
 
     //Método para pesquisar produtos que estão na lista pela descrição
     public List<ProdutoXDespensa> buscaLikeDescricaoProdutos(String desc){
-        Log.d("Success","Pesquisa via descrição do produto ");
+        Log.d("Success","BancoDeDados.buscaLikeDescricaoProdutos >>> " +
+                "Pesquisa via descrição do produto ");
         SQLiteDatabase conexao = getWritableDatabase();
-        Cursor resultado = conexao.rawQuery("SELECT * FROM PRODUTOXDESPENSA pd" +
+        Cursor resultado = conexao.rawQuery("SELECT * FROM PRODUTOXDESPENSA pd " +
                         "INNER JOIN PRODUTO p ON pd.ID_PRODUTO = p._ID " +
                         "WHERE p.DESCRICAO like ?;",
                 new String[]{"%" + desc + "%"});
         Log.d("Success","Query executada com sucesso");
 
         List<ProdutoXDespensa> listaFiltrada = new ArrayList<>();
-
-//        SELECT a1, a2, b1, b2
-//        FROM A
-//        INNER JOIN B on B.f = A.f;
 
         if (resultado.moveToFirst()){
             do {
