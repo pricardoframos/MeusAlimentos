@@ -191,7 +191,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
                             Log.d("Success","AddProdutosFragmentDespensa.buttonAdicionar >>> " +
                                     "Produto não encontrado");
                             Log.d("Success","AddProdutosFragmentDespensa.buttonAdicionar >>> " +
-                                    "Método cadastrarProdutoXDespensa acionado");
+                                    "Método cadastrarProduto acionado");
                             cadastrarProduto();
 
                             Log.d("Success","AddProdutosFragmentDespensa.buttonAdicionar >>> " +
