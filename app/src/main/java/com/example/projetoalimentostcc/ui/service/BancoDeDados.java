@@ -951,7 +951,7 @@ public class BancoDeDados extends SQLiteOpenHelper {
         Log.d("Success","Pesquisa via descrição do produto ");
         SQLiteDatabase conexao = getWritableDatabase();
         Cursor resultado = conexao.rawQuery("SELECT * FROM PRODUTOXDESPENSA pd" +
-                        "INNER JOIN PRODUTO p ON pd.ID_PRODUTO = p._ID" +
+                        "INNER JOIN PRODUTO p ON pd.ID_PRODUTO = p._ID " +
                         "WHERE p.DESCRICAO like ?;",
                 new String[]{"%" + desc + "%"});
         Log.d("Success","Query executada com sucesso");
