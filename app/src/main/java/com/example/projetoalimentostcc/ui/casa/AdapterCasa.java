@@ -110,6 +110,9 @@ public class AdapterCasa extends RecyclerView.Adapter<AdapterCasa.MyViewHolder>{
                 buscaIdProduto(listaProdutoXDespensa.get(position).getIdProduto()).get(0).
                 getUrlDaImagem()).into(holder.fotoProduto);
     }
+    public void atualizar(){
+        notifyDataSetChanged();
+    }
 
     //Método para remover o produto da listaProdutoXDespensa
     private int removerProdutoXDespensa(int indice) {

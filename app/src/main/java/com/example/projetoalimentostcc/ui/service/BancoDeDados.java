@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
+import android.text.Editable;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -946,30 +947,47 @@ public class BancoDeDados extends SQLiteOpenHelper {
     }
 
     //Método para pesquisar produtos que estão na lista pela descrição
-    public List<Produto> buscaLikeDescricaoProdutos(String desc){
+    public List<ProdutoXDespensa> buscaLikeDescricaoProdutos(String desc){
         Log.d("Success","Pesquisa via descrição do produto ");
         SQLiteDatabase conexao = getWritableDatabase();
-        Cursor resultado = conexao.query("PRODUTO",null,
-                "DESCRICAO like ?",
-                new String[]{"%" + desc + "%"},null,null,null,null);
+        Cursor resultado = conexao.rawQuery("SELECT * FROM PRODUTOXDESPENSA pd" +
+                        "INNER JOIN PRODUTO p ON pd.ID_PRODUTO = p._ID" +
+                        "WHERE p.DESCRICAO like ?;",
+                new String[]{"%" + desc + "%"});
         Log.d("Success","Query executada com sucesso");
 
-        List<Produto> listaFiltrada = new ArrayList<>();
+        List<ProdutoXDespensa> listaFiltrada = new ArrayList<>();
+
+//        SELECT a1, a2, b1, b2
+//        FROM A
+//        INNER JOIN B on B.f = A.f;
 
         if (resultado.moveToFirst()){
             do {
-                int id = resultado.getInt(0); //Coluna de índice zero == coluna _id
-                String codigo = resultado.getString(1);
-                String descricao = resultado.getString(2);
-                String categoria = resultado.getString(3);
-                String unidade = resultado.getString(4);
-                String imagem = resultado.getString(5);
-                Log.d("Success", "Valores captados da tabela PRODUTO");
+                //Recuperar os valores de cada coluna da tabela
+                int idRegistro = resultado.getInt(0); //Coluna de índice zero == coluna _id
+                Log.d("Success", "idRegistro recuperado: " + idRegistro);
+                int idProduto = resultado.getInt(1);
+                Log.d("Success", "idProduto recuperado: " + idProduto);
+                double estoqueProduto = resultado.getDouble(2);
+                Log.d("Success", "estoqueProduto recuperado: " + estoqueProduto);
+                String validProduto = resultado.getString(3);
+                Log.d("Success", "validProduto recuperado: " + validProduto);
+                int idDespensa = resultado.getInt(4);
+                Log.d("Success", "idDespensa recuperado: " + idDespensa);
 
-                Produto p = new Produto(id, codigo, descricao, categoria, unidade, imagem);
-                Log.d("Success: ", "Produto adicionado ao objeto");
+                Log.d("Success", "BancoDeDados.buscaLikeDescricaoProdutos >>> " +
+                        "Valores captados da tabela PRODUTOXDESPENSA");
 
-                listaFiltrada.add(p);
+                ProdutoXDespensa pXd = new ProdutoXDespensa(idRegistro, idProduto, estoqueProduto,
+                        validProduto, idDespensa);
+                Log.d("Success", "BancoDeDados.buscaLikeDescricaoProdutos >>> " +
+                        "Registro adicionado ao objeto");
+
+                //Adicionar o produto "p" na lista
+                listaFiltrada.add(pXd);
+                Log.d("Success", "BancoDeDados.buscaLikeDescricaoProdutos >>> " +
+                        "Registro adicionado à lista");
             }while (resultado.moveToNext());
 
 

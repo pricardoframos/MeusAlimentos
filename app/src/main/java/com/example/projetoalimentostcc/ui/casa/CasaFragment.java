@@ -1,11 +1,14 @@
 package com.example.projetoalimentostcc.ui.casa;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class CasaFragment extends Fragment implements AdapterCasa.IProdutoXDespe
     private View view;
     private ImageButton imgCasaAdd, imgButtonLerDispensa;
     private RecyclerView recyclerViewCasa;
+    private EditText editTextNomeProd;
 
     //Declaração de variáveis
     private List<ProdutoXDespensa> listaProdutoXDespensa = new ArrayList<>();
@@ -53,6 +57,7 @@ public class CasaFragment extends Fragment implements AdapterCasa.IProdutoXDespe
         //Referência dos elementos do fragment
         imgCasaAdd = view.findViewById(R.id.imgButtonCasaAdd);
         imgButtonLerDispensa = view.findViewById(R.id.imgButtonLerDispensa);
+        editTextNomeProd = view.findViewById(R.id.editTextNomeProd);
 
         //Abrir AddProdutoFragment
         imgCasaAdd.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +97,30 @@ public class CasaFragment extends Fragment implements AdapterCasa.IProdutoXDespe
         recyclerViewCasa.setHasFixedSize(true);
         recyclerViewCasa.setAdapter(adapter);
 
+        editTextNomeProd.addTextChangedListener(new TextWatcher() {
+            BancoDeDados bancoDeDados = new BancoDeDados(getContext(),1);
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if(editTextNomeProd.getText().toString().length() >= 1){
+                    listaProdutoXDespensa.addAll(bancoDeDados.buscaLikeDescricaoProdutos(editTextNomeProd.getText().toString()));
+                    adapter.atualizar();
+                }else{
+                    listaProdutoXDespensa.clear();
+                    listaProdutoXDespensa = bancoDeDados.buscaProdutoXDespensa();
+                    adapter.atualizar();
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         return view;
     }
 
@@ -110,9 +139,6 @@ public class CasaFragment extends Fragment implements AdapterCasa.IProdutoXDespe
                 ciclo++;
             }while(ciclo<listaProdutosXDespensa.size());
             Log.d("Success", "CasaFragment.criarProdutoXDespensa >>> Lista de produtosXdespensa encontrada");
-//            for(int i = 0; i < listaProdutosXDespensa.size(); i++){
-//
-//            }
         }
     }
 
