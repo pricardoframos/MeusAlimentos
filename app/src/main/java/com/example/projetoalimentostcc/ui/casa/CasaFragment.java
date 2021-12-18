@@ -106,26 +106,26 @@ public class CasaFragment extends Fragment implements AdapterCasa.IProdutoXDespe
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if(editTextNomeProd.getText().toString().length() >= 1){
-                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
-                            "onTextChanged >>> editTextNomeProd Alterado");
-                    listaProdutoXDespensa.addAll(bancoDeDados.buscaLikeDescricaoProdutos(editTextNomeProd.getText().toString()));
-                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
-                            "onTextChanged >>> Buscou produto pela descrição");
-                    adapter.atualizar();
-                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
-                            "onTextChanged >>> Atualizou o recyclerView");
-                }else{
-                    listaProdutoXDespensa.clear();
-                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
-                            "onTextChanged >>> Lista resetada");
-                    listaProdutoXDespensa = bancoDeDados.buscaProdutoXDespensa();
-                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
-                            "onTextChanged >>> editTextNomeProd Alterado");
-                    adapter.atualizar();
-                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
-                            "onTextChanged >>> Atualizou o recyclerView");
-                }
+//                if(editTextNomeProd.getText().toString().length() >= 1){
+//                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
+//                            "onTextChanged >>> editTextNomeProd Alterado");
+//                    listaProdutoXDespensa.addAll(bancoDeDados.buscaLikeDescricaoProdutos(editTextNomeProd.getText().toString()));
+//                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
+//                            "onTextChanged >>> Buscou produto pela descrição");
+//                    adapter.atualizar();
+//                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
+//                            "onTextChanged >>> Atualizou o recyclerView");
+//                }else{
+//                    listaProdutoXDespensa.clear();
+//                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
+//                            "onTextChanged >>> Lista resetada");
+//                    listaProdutoXDespensa = bancoDeDados.buscaProdutoXDespensa();
+//                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
+//                            "onTextChanged >>> editTextNomeProd Alterado");
+//                    adapter.atualizar();
+//                    Log.d("Success","CasaFragment.editTextNomeProd.addTextChangedListener." +
+//                            "onTextChanged >>> Atualizou o recyclerView");
+               // }
             }
             @Override
             public void afterTextChanged(Editable editable) {

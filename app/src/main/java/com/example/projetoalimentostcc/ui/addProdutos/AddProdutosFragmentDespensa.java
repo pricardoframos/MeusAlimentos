@@ -126,7 +126,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month+1;
-                String date = day+"/"+month+"/"+year;
+                String date = String.format("%02d",day)+"/"+String.format("%02d",month)+"/"+year;
                 textViewData.setText(date);
             }
         };
@@ -138,7 +138,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month = month+1;
-                        String date = day+"/"+month+"/"+year;
+                        String date = String.format("%02d",day)+"/"+String.format("%02d",month)+"/"+year;
                         textViewData.setText(date);
                     }
                 }, year,month,day);
@@ -163,15 +163,15 @@ public class AddProdutosFragmentDespensa extends Fragment {
         //Botão Adicionar
         buttonAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {                            
                 if(AlterFragment.fragmentoOrigemDestino == "RecycleViewCasa-AddProdutosFragmentDespensa"){
                     atualizarProduto();
                     atualizarProdutoXDespensa();
                     AlterFragment.fragmentoOrigemDestino = null;
                     retornarFragment();
                 }else{
-                    //Validar se o campo Descrição está preenchido
-                    if(!editTextDesc.getText().toString().isEmpty()){
+                    //Validar se o campo Descrição e a data estão preenchidos
+                    if(!editTextDesc.getText().toString().isEmpty() && !textViewData.getText().toString().isEmpty()){
                         //Validar se o produto a ser adicionado na despensa já está cadastrado no banco
                         BancoDeDados bancoDeDados = new BancoDeDados(getContext(),1);
                         List<Produto> listaProduto = bancoDeDados.buscaDescricaoProduto(editTextDesc.getText().toString().trim());
@@ -203,7 +203,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
                             retornarFragment();
                         }
                     }else {
-                        Toast.makeText(getContext(), "O campo descrição não pode estar vazio!",
+                        Toast.makeText(getContext(), "O campo descrição e a data não podem estar vazios!",
                                 Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -285,7 +285,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
 
         //Variáveis para validação de elementos
         double quantidade;
-        String data;
+        String data = textViewData.getText().toString().replace("/","");
 
         //Validação dos elementos
         if(editTextQuant.getText().toString().isEmpty()){
@@ -293,19 +293,14 @@ public class AddProdutosFragmentDespensa extends Fragment {
         }else {
             quantidade = Double.parseDouble(editTextQuant.getText().toString());
         }
-       // if(editTextDate.getText().toString().isEmpty()){
-          //  data = "01012001";
-      //  }else{
-        //    data = editTextDate.getText().toString().replace("/","");
-        //}
 
-       // try {
-         //   bancoDeDados.cadastrarProdutoXDespensa(listaProduto.get(0).getId(),
-           //         quantidade,data,
-             //       listaDespensa.get(0).getId());
-        //}catch(Exception e){
-          //  Log.d("Success","Add.ProdutosFragment.cadastrarProdutoXDespensa >>> "+ e);
-        //}
+        try {
+            bancoDeDados.cadastrarProdutoXDespensa(listaProduto.get(0).getId(),
+                    quantidade,data,
+                    listaDespensa.get(0).getId());
+        }catch(Exception e){
+            Log.d("Success","Add.ProdutosFragment.cadastrarProdutoXDespensa >>> "+ e);
+        }
     }
 
     //Cadastrar PRODUTO
@@ -365,7 +360,7 @@ public class AddProdutosFragmentDespensa extends Fragment {
 
             //Variáveis para validação de elementos
             double quantidade;
-            String data = null;
+            String data = textViewData.getText().toString().replace("/","");
 
             //Validação dos elementos
             if(editTextQuant.getText().toString().isEmpty()){
@@ -373,11 +368,6 @@ public class AddProdutosFragmentDespensa extends Fragment {
             }else {
                 quantidade = Double.parseDouble(editTextQuant.getText().toString());
             }
-        //    if(editTextDate.getText().toString().isEmpty()){
-                data = "01012001";
-         //   }else{
-          //      data = editTextDate.getText().toString();
-            //}
 
             Log.d("Success","AddProdutosFragmentDespensa.atualizarProdutoXDespensa >>> Validações feitas");
 
@@ -577,10 +567,15 @@ public class AddProdutosFragmentDespensa extends Fragment {
         Log.d("Success","Add.ProdutosFragmentDespensa.abrirProdutoRecycler >>> " +
                 "Unidade de medida captada e inserida");
 
-       // editTextDate.setText(String.valueOf(bancoDeDados.buscaIdProdutoXDespensa
-       //         (AlterFragment.indiceRecyclerViewCasa).get(0).getValidProduto()));
-      //  Log.d("Success","Add.ProdutosFragmentDespensa.abrirProdutoRecycler >>> " +
-        //        "Data captada e inserida");
+        //Máscara no para o campo data de validade
+        SimpleMaskFormatter smfData = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtwData = new MaskTextWatcher(textViewData, smfData);
+        textViewData.addTextChangedListener(mtwData);
+
+        textViewData.setText(String.valueOf(bancoDeDados.buscaIdProdutoXDespensa
+                (AlterFragment.indiceRecyclerViewCasa).get(0).getValidProduto()));
+        Log.d("Success","Add.ProdutosFragmentDespensa.abrirProdutoRecycler >>> " +
+                "Data captada e inserida");
 
         if(bancoDeDados.buscaIdProduto(bancoDeDados.buscaIdProdutoXDespensa
                 (AlterFragment.indiceRecyclerViewCasa).get(0).getIdProduto()).get(0).getUrlDaImagem()!=null){
